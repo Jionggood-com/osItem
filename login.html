@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OS login</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/os.login.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<div id="loginbox">
+  <form id="loginform" class="form-vertical" action="#">
+    <div class="control-group normal_text">
+      <h3>Banggood<b>.OS</b></h3>
+      后台管理系统
+    </div>
+    <div class="control-group nousername">
+      <div class="loginmsg">密码不正确.</div>
+    </div>
+    <div class="control-group">
+      <div class="controls icon-user">
+        <div class="main_input_box">
+          <input type="text" placeholder="Username" name="username"  id="username" class="inputchang" />
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls icon-lock">
+        <div class="main_input_box">
+          <input type="password" placeholder="Password" name="password"  id="password" class="inputchang"  />
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <input class="btn btn-save" type="submit" value="Login">
+    </div>
+  </form>
+</div>
+<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="js/os.common.js" ></script>
+<script type="text/javascript">
+	$('#loginform').submit(function(){
+		if($('#username').val() == '' && $('#password').val() == '') {
+			$('.nousername').fadeIn();
+			return false;	
+		}
+		if($('#username').val() != '' && $('#password').val() == '') {
+			$('.nousername').fadeIn();
+			return false;;
+		}
+	});
+</script>
+</body>
+</html>

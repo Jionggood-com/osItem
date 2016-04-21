@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OS</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <span class="navbar-brand">Banggood<b>.OS</b></span>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li class="dropdown nav-box active">
+            <a href="#" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">Orders <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">录入订单</a></li>
+            </ul>
+        </li>
+        <li class="dropdown nav-box">
+            <a href="#" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">Customers <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Customers</a></li>
+            </ul>
+        </li>
+        <li class="dropdown nav-box">
+            <a href="#" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">Reports <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </li>
+        <li class="dropdown nav-box">
+            <a href="#" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">Tool <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Tool</a></li>
+            </ul>
+        </li>
+        <li class="dropdown nav-box">
+            <a href="#" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">Affiliate <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Affiliate</a></li>
+            </ul>
+        </li>
+        <li class="dropdown nav-box">
+          <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">汇总 <span class="caret"></span></a>
+          <div class="dropdown-menu">
+			<div class="dropdown-menu-box w300">
+                <dl>
+                    <dt>SubMenu</dt>
+                    <dd><a href="#">Title</a></dd>
+                    <dd><a href="#">Title</a></dd>
+                </dl>
+                 <dl>
+                    <dt>SubMenu</dt>
+                    <dd><a href="#">Title</a></dd>
+                    <dd><a href="#">Title</a></dd>
+                </dl>
+                 <dl>
+                    <dt>SubMenu</dt>
+                    <dd><a href="#">Title</a></dd>
+                    <dd><a href="#">Title</a></dd>
+                </dl>
+                 <dl>
+                    <dt>SubMenu</dt>
+                    <dd><a href="#">Title</a></dd>
+                    <dd><a href="#">Title</a></dd>
+                </dl>
+             </div>
+            </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle user-admin" href="#"><span class="user_img"><img src="images/user_img.png"></span>Admin <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Change password</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--nav end-->
+<div class="container">
+	<div class="os-item">
+    	<form id="ordersSearchSubmit">
+            <h1 class="os-h1">订单筛选</h1>
+            <div class="os-item-search">
+                <div class="search-list">
+                    <div class="search-type-box">
+                        <span class="subtitle">订单状态</span>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span id="0" class="active">Please Select</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data="0">
+                             	<li><a href="javascript:void(0)" onClick="checkOrdersStatus(1)" cid="1">Payment Pending</a></li>
+                             	<li><a href="javascript:void(0)" onClick="checkOrdersStatus(2)" cid="2">Payment Preparing</a></li>
+                            	<li><a href="javascript:void(0)" onClick="checkOrdersStatus(3)" cid="3">Payment Confirmed</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersStatus(4)" cid="4">Processing</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersStatus(5)" cid="5">Shipped</a></li>
+                            </ul>
+                            <input type="hidden" id="OrdersStatus" value="0">
+                        </div>
+                     </div>
+                     <div class="search-type-box">
+                        <span class="subtitle">订单类型</span>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span id="0" class="active">Please Select</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data="0">
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(1)" cid="1">Normal(正常)</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(2)" cid="2">Sample(样品)</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(3)" cid="3">Gift(Coupon)</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(4)" cid="4">Group(团购)</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(5)" cid="5">Wholesale(批发)</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(6)" cid="6">Dropshipping</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkOrdersType(7)" cid="7">Unbeatable</a></li>
+                             </ul>
+                             <input type="hidden" id="OrdersType" value="0">
+                        </div>
+                     </div>
+                     <div class="search-type-box">
+                        <span class="subtitle">付款方式</span>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span id="0" class="active">Please Select</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data="0">
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(1)" cid="1">PayPal Express Checkout</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(2)" cid="2">World Pay</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(3)" cid="3">Global Collect</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(4)" cid="4">Boleto</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(5)" cid="5">Qiwi</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(6)" cid="6">Webmoney</a></li>
+                                <li><a href="javascript:void(0)" onClick="checkPaymentMethod(7)" cid="7">Yandex</a></li>
+                             </ul>
+                             <input type="hidden" id="PaymentMethod" value="0">
+                        </div>
+                     </div>
+                     <div class="search-type-box">
+                        <span class="subtitle">延迟订单</span>
+                        <input type="checkbox">
+                     </div>
+                     <div class="search-type-box">
+                        <span class="subtitle">拆单/合并订单</span>
+                        <input type="checkbox">
+                     </div>
+                </div>
+                <div class="search-list">
+                    <div class="search-type-box">
+                        <select>
+                            <option selected="selected" value="1">订单号</option>
+                            <option value="2">OA订单</option>
+                            <option value="3">SKU</option>
+                        </select>
+                        <input type="text" class="inputchang w80">
+                    </div>
+                    <div class="search-type-box">
+                        <span class="subtitle">邮箱</span>
+                        <input type="text" class="inputchang" name="email">
+                    </div>
+                    <div class="search-type-box">
+                         <span class="subtitle">Coupon</span>
+                        <input type="text" class="inputchang w80" name="coupon">
+                    </div>
+                    <div class="search-type-box">
+                        <select>
+                            <option selected="selected" value="0">请选择仓库</option>
+                            <option value="1">深圳采购处理中心</option>
+                            <option value="2">广州采购处理中心</option>
+                            <option value="3">美国处理中心</option>
+                            <option value="4">英国处理中心</option>
+                            <option value="5">会江服装处理中心</option>
+                            <option value="6">杭州处理中心</option>
+                        </select>
+                    </div>
+                    <div class="search-type-box">
+                        <select>
+                            <option selected="selected" value="0">选择Aff来源</option>
+                            <option value="1">Sharesale</option>
+                            <option value="2">bg_affiliate</option>
+                        </select>
+                    </div>
+                    <div class="search-type-box">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span id="0" class="active">Select Country</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data="0" off="0">
+                                <li><input type="text" class="inputchang mini-search"></li>
+                                <li><a href="javascript:void(0)" cid="1">Afghanistan</a></li>
+                                <li><a href="javascript:void(0)" cid="2">Albania</a></li>
+                                <li><a href="javascript:void(0)" cid="3">Bahamas</a></li>
+                                <li><a href="javascript:void(0)" cid="4">Boleto</a></li>
+                                <li><a href="javascript:void(0)" cid="5">Cambodia</a></li>
+                                <li><a href="javascript:void(0)" cid="6">Cuba</a></li>
+                                <li><a href="javascript:void(0)" cid="7">Denmark</a></li>
+                                <li><a href="javascript:void(0)" cid="8">Eritrea</a></li>
+                                <li><a href="javascript:void(0)" cid="9">Gambia</a></li>
+                                <li><a href="javascript:void(0)" cid="10">Germany</a></li>
+                                <li><a href="javascript:void(0)" cid="11">Hong Kong</a></li>
+                                <li><a href="javascript:void(0)" cid="12">Iraq</a></li>
+                                <li><a href="javascript:void(0)" cid="13">Jamaica</a></li>
+                                <li><a href="javascript:void(0)" cid="14">Jordan</a></li>
+                                <li><a href="javascript:void(0)" cid="15">Kyrgyzstan</a></li>
+                                <li><a href="javascript:void(0)" cid="16">Lithuania</a></li>
+                                <li><a href="javascript:void(0)" cid="17">Mayotte</a></li>
+                                <li><a href="javascript:void(0)" cid="18">Mexico</a></li>
+                             </ul>
+                             <input type="hidden" id="country" value="0">
+                        </div>
+                    </div>
+                    <div class="search-type-box">
+                        <select>
+                            <option selected="selected" value="0">选择站点</option>
+                            <option value="1">主站</option>
+                            <option value="2">旧站</option>
+                            <option value="3">手机站</option>
+                            <option value="4">安卓客户端</option>
+                            <option value="5">批发站</option>
+                            <option value="6">Yoins</option>
+                            <option value="7">IOS</option>
+                            <option value="8">Newchic</option>
+                            <option value="9">Newchic手机站</option>
+                            <option value="10">Newchic IOS</option>
+                            <option value="11">Yoins IOS</option>
+                            <option value="12">Yoins Wap</option>
+                        </select>
+                    </div>
+                    <div class="search-type-box">
+                       <span class="subtitle">日期</span>
+                       <input id="add_date_start" type="text" onClick="WdatePicker({lang:'en',maxDate:'%y-%M-%d'})" value="" name="add_date_start" class="inputchang w80">
+                        -
+                       <input id="add_date_end" type="text" onClick="WdatePicker({lang:'en',maxDate:'%y-%M-%d'})" value="" name="add_date_end" class="inputchang w80">
+                    </div>
+                    <div class="search-type-box">
+                        <input type="submit" value="Search" name="button" class="btn-save">
+                        <input type="reset" value="Reset" name="toReset" class="btn-reset">
+                        <a class="btn-edit" href="#">录入订单</a>
+                    </div>
+                </div>
+            </div>
+            <div class="os-table">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <th><input type="checkbox"></th>
+                    <th>订单号</th>
+                    <th>OA订单</th>
+                    <th>OA跟踪号</th>
+                    <th>客户邮箱</th>
+                    <th>金额</th>
+                    <th>订单状态</th>
+                    <th>订单类型</th>
+                    <th>Admin</th>
+                    <th>下单时间</th>
+                    <th>有效期</th>
+                    <th>IP</th>
+                    <th>仓库</th>
+                    <th>Submenu</th>
+                    <th>Aff来源</th>
+                    <th>国家</th>
+                    <th>Coupon</th>
+                    <th>付款方式</th>
+                    <th>操作</th>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747130</td>
+                    <td><span class="order-oa" data-placement="right" title="A000361509190707"><a href="http://banggood.sellercube.com/BillDetail/index?id=A000361509190707&ifLoad=true&coding=0" target="_blank">A000361509190707</a></span></td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="y130781854@att.net">y130781854@att.net</span></td>
+                    <td>US$10.70</td>
+                    <td>Ready To Process</td>
+                    <td>normal</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:32:08</td>
+                    <td> 20天</td>
+                    <td><span class="order-ip" data-placement="right" title="108.196.58.112">108.196.58.112</span></td>
+                    <td>广州采购处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td> United States</td>
+                    <td>无</td>
+                    <td> PayPal Express Checkout</td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747129</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="ieatpez@gmail.com">ieatpez@gmail.com</span></td>
+                    <td>US$152.94</td>
+                    <td> Payment Confirmed</td>
+                    <td>dropshipping</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:32:00</td>
+                    <td> 7天</td>
+                    <td><span class="order-ip" data-placement="right" title="166.172.123.141">166.172.123.141</span></td>
+                    <td>广州采购处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Japan</td>
+                    <td>无</td>
+                    <td>PayPal Express Checkout </td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747128</td>
+                    <td><span class="order-oa" data-placement="right" title="A000091509195EF0"><a href="http://banggood.sellercube.com/BillDetail/index?id=A000361509190707&ifLoad=true&coding=0" target="_blank">A000091509195EF0</a></span></td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="salvadorluna530@gmail.com">salvadorluna530@gmail.com</span></td>
+                    <td>US$12.56</td>
+                    <td>Review</td>
+                    <td>wholesale</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:31:48</td>
+                    <td>6天</td>
+                    <td><span class="order-ip" data-placement="right" title="66.87.97.173">66.87.97.173</span></td>
+                    <td>杭州处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Australia</td>
+                    <td>无</td>
+                    <td> PayPal Express Checkout </td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747127</td>
+                    <td><span class="order-oa" data-placement="right" title="A000371509192734"><a href="http://banggood.sellercube.com/BillDetail/index?id=A000361509190707&ifLoad=true&coding=0" target="_blank">A000371509192734</a></span></td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="greatdealsfromme@hotmail.com">greatdealsfromme@hotmail.com</span></td>
+                    <td>US$9.23</td>
+                    <td>Ready To Process</td>
+                    <td>normal</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:31:47</td>
+                    <td> 20天</td>
+                    <td><span class="order-ip" data-placement="right" title="68.145.216.223">68.145.216.223</span></td>
+                    <td>美国处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Chile</td>
+                    <td>无</td>
+                    <td> OC_CC </td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747126</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="granz@newl.com">granz@newl.com</span></td>
+                    <td>US$9.32</td>
+                    <td>Ready To Process</td>
+                    <td>normal</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:31:28</td>
+                    <td> 20天 </td>
+                    <td><span class="order-ip" data-placement="right" title="98.118.28.59">98.118.28.59</span></td>
+                    <td>广州采购处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Canada</td>
+                    <td>无</td>
+                    <td> OC_CC </td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747125</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="sbookmorimoto@hotmail.com">sbookmorimoto@hotmail.com</span></td>
+                    <td>US$61.81</td>
+                    <td>Ready To Process</td>
+                    <td>normal</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:31:21</td>
+                    <td> 20天</td>
+                    <td><span class="order-ip" data-placement="right" title="180.0.152.109">180.0.152.109</span></td>
+                    <td>广州采购处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td> United Kingdom</td>
+                    <td>无</td>
+                    <td> PayPal Express Checkout </td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8747124</td>
+                    <td><span class="order-oa" data-placement="right" title="A000361509190706"><a href="http://banggood.sellercube.com/BillDetail/index?id=A000361509190707&ifLoad=true&coding=0" target="_blank">A000361509190706</a></span></td>
+                    <td>&nbsp;</td>
+                    <td><span class="order-email" data-placement="right" title="jesse@jessebanks.com">jesse@jessebanks.com</span></td>
+                    <td>US$19.19</td>
+                    <td>Ready To Process</td>
+                    <td>normal</td>
+                    <td>&nbsp;</td>
+                    <td>2015-09-19 11:31:20</td>
+                    <td> 20天</td>
+                    <td><span class="order-ip" data-placement="right" title="73.164.215.202">73.164.215.202</span></td>
+                    <td>广州采购处理中心</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td> United States</td>
+                    <td>无</td>
+                    <td> PayPal Express Checkout </td>
+                    <td><a href="#">查看</a> | <a href="#">编辑</a></td>
+                  </tr>
+                </table>
+                <div class="os-table-bottom">
+                    <div class="show-page">
+                        Show
+                        <select>
+                            <option value="10" selected="selected">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-save" type="button">Go!</button>
+                        </span>
+                    </div>
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#" aria-label="First"><span aria-hidden="true">First</span></a></li>
+                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
+                        <li><a href="#" aria-label="last"><span aria-hidden="true">Last</span></a></li>
+                     </ul>
+                    <span class="page-info">Page: 1 / 467  Total records: 9331</span>
+                </div>
+            </div>
+    	</form>
+	</div>
+</div>
+<!--Modal start-->
+弹层Modal<br />
+<a href="javasrcipt:;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id="10" data-whatever="one">Open modal for one</a>
+<span  class="btn btn-primary" data-toggle="modal" data-id="11" data-target="#exampleModal" data-whatever="two">Open modal for two</span>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-id="12" data-target="#exampleModal" data-whatever="three">Open modal for three</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        <!--<form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal end-->
+<!--input start-->
+<br /><br />
+<div class="container">
+    <div class="os-input">
+        <form class="form-horizontal" method="get" action="#">
+            <div class="control-group">
+              <label class="control-label">First Name :</label>
+              <div class="controls">
+                <input type="text" placeholder="First name" class="inputchang">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Last Name :</label>
+              <div class="controls">
+                <input type="text" placeholder="Last name" class="inputchang">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Password input</label>
+              <div class="controls">
+                <input type="password" placeholder="Enter Password" class="inputchang">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Company info :</label>
+              <div class="controls">
+                <input type="text" placeholder="Company name" class="inputchang">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Description field:</label>
+              <div class="controls">
+                <input type="text" class="inputchang">
+                <span class="help-block">Description field</span> </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Message</label>
+              <div class="controls">
+                <textarea class="inputchang textareachang"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-save" type="submit">Save</button>
+            </div>
+          </form>
+    </div>
+</div>
+<!--input end-->
+<!--tabs start-->
+<br /><br />
+<div class="container">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">1</div>
+    <div role="tabpanel" class="tab-pane" id="profile">2</div>
+    <div role="tabpanel" class="tab-pane" id="messages">3</div>
+    <div role="tabpanel" class="tab-pane" id="settings">4</div>
+  </div>
+
+</div>
+<!--tabs end-->
+<br /><br />
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">可消失的弹出框</a>
+<a type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 左侧
+</a>
+
+<a type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 顶部
+</a>
+
+<a type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 底部
+</a>
+
+<a type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 右侧
+</a>
+<br /><br />
+<br /><br />
+<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="js/os.common.js" ></script>
+<script type="text/javascript" src="js/os.order.js" ></script>
+<script type="text/javascript" src="js/mydatepicker/WdatePicker.js" ></script>
+<script type="text/javascript">
+var html = "are you want to do this shift."
+$('#exampleModal').on('show.bs.modal',function(event) {
+	var obj = $(event.relatedTarget); 
+	var title = obj.data('whatever'); 
+	var id = obj.data('id'); 
+	var modal = $(this);
+	modal.find('.modal-title').text(title);
+	modal.find('.modal-body').text(html);
+	ModalConfirm(title,function(callback){	 
+		if(callback){myFunction(obj,id);}
+	});
+});
+
+function myFunction(obj,id){
+	var obj = $(obj);
+	//var input = $(".modal-content").find("#recipient-name").val();
+	//var textarea = $(".modal-content").find("#message-text").val();
+	alert('you choose this button id was: '+id);
+	//alert(input);
+	//alert(textarea);
+	obj.css("background","red");
+	$('.modal').modal('hide');
+}
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+</body>
+</html>
